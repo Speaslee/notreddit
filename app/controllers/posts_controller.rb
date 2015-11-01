@@ -16,12 +16,12 @@ def new
 end
 
 def create
-  @post = Post.create(
-  title: params[:title],
-  body: params[:body],
-  user_id: params[:user_id]
+ Post.create(
+  title: params[:post][:title],
+  body: params[:post][:body],
+  user_id: params[:post][:user_id]
   )
-  redirect_to @post
+  redirect_to "/posts/#{Post.last.id}"
 end
 
 def edit

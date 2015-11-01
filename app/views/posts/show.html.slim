@@ -1,10 +1,13 @@
 h1= @post.title
+h3 Posted by #{@post.user.name}
 
 .well
  =@post.body
 
 hr
 / h3 #{@post.votes.count} votes
+
+
 h3 #{@post.comments.count} comments
 -if current_user
   = form_for @comment do |f|
@@ -27,8 +30,7 @@ ul
     li
       h3= t.subject
       p= t.body
-      small Posted #{time_ago_in_words t.created_at} ago by
-      small= t.user.name
+      small Posted #{time_ago_in_words t.created_at} ago by #{t.user.name}
       -if current_user
         =render "form", :t=> t
 
@@ -39,8 +41,7 @@ ul
           li
             h4= s.subject
             p= s.body
-            small Posted #{time_ago_in_words s.created_at} ago by 
-            small= s.user.name
+            small Posted #{time_ago_in_words s.created_at} ago by #{s.user.name}
 
             -if current_user
               =render "form", :t=> s
@@ -52,8 +53,7 @@ ul
                 li
                   h4= d.subject
                   p= d.body
-                  small Posted #{time_ago_in_words d.created_at} ago by
-                  small= d.user.name
+                  small Posted #{time_ago_in_words d.created_at} ago by #{d.user.name}
                   -if current_user
                     =render "form", :t=> s
 
