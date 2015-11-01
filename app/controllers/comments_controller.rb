@@ -9,7 +9,6 @@ class CommentsController<ApplicationController
   end
 
   def create
-
     Comment.create(
     subject: params[:comment][:subject],
     body: params[:comment][:body],
@@ -17,6 +16,6 @@ class CommentsController<ApplicationController
     commentable_id: params[:comment][:commentable_id],
     commentable_type: params[:comment][:commentable_type]
     )
-    redirect_to "/posts/1", notice: "comment commented"
+    redirect_to @post, notice: "comment commented"
   end
 end

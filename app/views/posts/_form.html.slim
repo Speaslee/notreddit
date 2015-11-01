@@ -1,0 +1,6 @@
+= form_for Comment.find(t.id).comments.new do |f|
+  = f.hidden_field :subject, value: "Re: #{Comment.find(t.id).subject}"
+  = f.text_area :body, class: "form-control", rows: 2
+  =f.hidden_field :commentable_type
+  =f.hidden_field :commentable_id
+  button.btn.btn-primary Comment

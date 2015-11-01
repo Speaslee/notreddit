@@ -17,8 +17,11 @@ end
 
 def create
   @post = Post.create(
-  :title
+  title: params[:title],
+  body: params[:body],
+  user_id: params[:user_id]
   )
+  redirect_to @post
 end
 
 def edit

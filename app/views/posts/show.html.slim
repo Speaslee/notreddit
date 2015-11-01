@@ -5,7 +5,7 @@ h1= @post.title
 
 hr
 / h3 #{@post.votes.count} votes
-h3 #{@post.comments.count + @post.comments.comments.count} comments
+h3 #{@post.comments.count} comments
 -if current_user
   = form_for @comment do |f|
     h4 Subject
@@ -22,27 +22,39 @@ h3 #{@post.comments.count + @post.comments.comments.count} comments
   h2 Please login to comment on this post
 
 -if @post.comments.any?
+ul
   -@post.comments.each do |t|
+    li
+      h3= t.subject
+      p= t.body
+      small Posted #{time_ago_in_words t.created_at} ago by
+      small= t.user.name
+      -if current_user
+        =render "form", :t=> t
 
-    h3= t.subject
-    p= t.body
-    small Posted #{time_ago_in_words t.created_at} ago by
-    small= t.user.name
-    -if current_user
-      = form_for Comment.new do |f|
-        = f.hidden_field :subject, value: "Re: #{t.subject}"
-
-        h4 Comment
-        = f.text_area :body, class: "form-control", rows: 2
-
-        =f.hidden_field :commentable_type, value: "Comment"
-        =f.hidden_field :commentable_id, value: t.id
-
-        button.btn.btn-primary Comment
-
-        -if t.comments.any?
-          -t.comments.each do |s|
-            h2= s.subject
+          button.btn.btn-primary Comment
+      -if t.comments.any?
+      ul
+        -t.comments.each do |s|
+          li
+            h4= s.subject
             p= s.body
-            small Posted #{time_ago_in_words t.created_at} ago by
+            small Posted #{time_ago_in_words s.created_at} ago by 
             small= s.user.name
+
+            -if current_user
+              =render "form", :t=> s
+
+                button.btn.btn-primary Comment
+            -if s.comments.any?
+            ul
+              -s.comments.each do |d|
+                li
+                  h4= d.subject
+                  p= d.body
+                  small Posted #{time_ago_in_words d.created_at} ago by
+                  small= d.user.name
+                  -if current_user
+                    =render "form", :t=> s
+
+                      button.btn.btn-primary Comment

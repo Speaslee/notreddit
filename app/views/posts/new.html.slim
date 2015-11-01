@@ -1,10 +1,12 @@
 h1 New Post
 
-form_for @post do |f|
-h4 Title
-  = f.text_area :title, class: "form-control", rows: 1
+-if current_user
+  = form_for @post do |f|
+    h4 Title
+    = f.text_area :title, class: "form-control", rows: 1
 
-h4 Body
-= f.text_area :body, class: "form-control", rows: 10
+    h4 body
+    = f.text_area :body, class: "form-control", rows: 4
+    = f.hidden_field :user_id, value: current_user.id
 
-button.btn.btn-primary Post
+    button.btn.btn-primary Post

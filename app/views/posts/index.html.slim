@@ -3,5 +3,5 @@ ul
 - @posts.each do |a|
   li= link_to a.title, a
 
-    /-if current_user
-    /=link_to "New Post", new_post_path(@post)
+-if current_user
+    =link_to "New Post", new_post_path(@post)
