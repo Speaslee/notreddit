@@ -1,0 +1,48 @@
+h1= @post.title
+
+.well
+ =@post.body
+
+hr
+/ h3 #{@post.votes.count} votes
+h3 #{@post.comments.count + @post.comments.comments.count} comments
+-if current_user
+  = form_for @comment do |f|
+    h4 Subject
+    = f.text_area :subject, class: "form-control", rows: 1
+
+    h4 Comment
+    = f.text_area :body, class: "form-control", rows: 4
+
+    =f.hidden_field :commentable_type
+    =f.hidden_field :commentable_id
+
+    button.btn.btn-primary Comment
+-else
+  h2 Please login to comment on this post
+
+-if @post.comments.any?
+  -@post.comments.each do |t|
+
+    h3= t.subject
+    p= t.body
+    small Posted #{time_ago_in_words t.created_at} ago by
+    small= t.user.name
+    -if current_user
+      = form_for Comment.new do |f|
+        = f.hidden_field :subject, value: "Re: #{t.subject}"
+
+        h4 Comment
+        = f.text_area :body, class: "form-control", rows: 2
+
+        =f.hidden_field :commentable_type, value: "Comment"
+        =f.hidden_field :commentable_id, value: t.id
+
+        button.btn.btn-primary Comment
+
+        -if t.comments.any?
+          -t.comments.each do |s|
+            h2= s.subject
+            p= s.body
+            small Posted #{time_ago_in_words t.created_at} ago by
+            small= s.user.name
