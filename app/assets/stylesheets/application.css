@@ -17,3 +17,7 @@ ul li {
 display: block;
 list-style: none;
 }
+
+.new_comment {
+  display: none;
+}

@@ -32,6 +32,7 @@ h3 #{@post.votes.count} votes, (#{@post.votes.where(status: true).count} upvotes
 
 h3 #{@post.comments.count + counter} comments
 -if current_user
+  button.btn.btn-show_comments Comment
   = form_for @comment do |f|
     h4 Subject
     = f.text_area :subject, class: "form-control", rows: 1
@@ -56,6 +57,7 @@ ul
       p
       small #{t.votes.count} votes,<em> #{t.votes.where(status: true).count} upvotes and #{t.votes.where(status: false).count} downvotes </em>
       -if current_user
+        button.btn.btn-show_comments Comment
         =render "form", :t=> t
         =render "form2", :t=> t
       -if t.comments.any?
@@ -68,6 +70,7 @@ ul
             p
             small #{s.votes.count} votes,<em> #{s.votes.where(status: true).count} upvotes and #{s.votes.where(status: false).count} downvotes </em>
             -if current_user
+              button.btn.btn-show_comments Comment
               =render "form", :t=> s
               =render "form2", :t=> s
 
@@ -81,5 +84,6 @@ ul
                   p
                   small #{d.votes.count} votes,<em> #{d.votes.where(status: true).count} upvotes and #{d.votes.where(status: false).count} downvotes </em>
                   -if current_user
+                    button.btn.btn-show_comments Comment
                     =render "form", :t=> d
                     =render "form2", :t=> d

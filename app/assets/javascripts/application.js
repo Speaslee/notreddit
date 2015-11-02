@@ -15,3 +15,9 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on("ready", function() {
+  $(".btn-show_comments").on("click", function() {
+    $(".new_comment").toggle('show');
+  })
+})
