@@ -21,3 +21,6 @@ list-style: none;
 .new_comment {
   display: none;
 }
+.edit_comment {
+  display: none;
+}

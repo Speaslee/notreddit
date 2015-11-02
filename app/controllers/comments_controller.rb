@@ -8,6 +8,17 @@ class CommentsController<ApplicationController
     @comment = Comment.find params[:id]
   end
 
+  def update
+    if current_user.id == Comment.find(params[:id]).user_id
+      Comment.find(params[:id]).update(
+      body: params[:comment][:body]
+      )
+      redirect_to :back, notice: "comment edited"
+    else
+      redirect_to :back, notice: "You can't edit comments you didn't make"
+    end
+  end
+
   def create
     Comment.create(
     subject: params[:comment][:subject],

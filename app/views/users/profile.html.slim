@@ -34,5 +34,5 @@
   ul
     -@user.comments.last(5).each do |comment|
       li In response to #{comment.commentable_type} posted by #{comment.commentable.user.name} </br>
-         <Blockquote><b> #{comment.subject} </b> posted #{time_ago_in_words comment.created_at}: <em> #{comment.body} </em>
+         <b> #{comment.subject} </b> posted #{time_ago_in_words comment.created_at}: <em> #{comment.body} </em>
          <p></p>

@@ -22,3 +22,10 @@ $(document).on("ready", function() {
     $(this).siblings(".new_comment").toggle('show');
   })
 })
+
+$(document).on("ready", function() {
+  $(".btn-editing").on("click", function() {
+    console.log(this);
+    $(this).siblings(".edit_comment").toggle('show');
+  })
+})
