@@ -1,6 +1,38 @@
--if current_user
-h1= current_user.name
+-if User.find(params[:id])== current_user
+  h1= current_user.name
 
-p You have been a member since #{current_user.created_at}
-p You have made #{current_user.posts.count} posts
-p You have made #{current_user.comments.count} comments
+  p You have been a member since #{current_user.created_at}
+  p You have made #{current_user.posts.count} posts
+  ul
+    -current_user.posts.each do |a|
+      li #{link_to a.title, a} posted #{time_ago_in_words a.created_at}
+  p You have made #{current_user.comments.count} comments
+  p Your most recent comments:
+  ul
+    -current_user.comments.last(5).each do |comment|
+      li In response to a <strong>#{comment.commentable_type}</strong> posted by #{comment.commentable.user.name} </br>
+        <strong> #{comment.subject} </strong> posted #{time_ago_in_words comment.created_at}: <em> #{comment.body} </em>
+        <p></p>
+
+
+  =link_to "Edit Your Profile", edit_user_registration_path
+
+
+
+
+
+-else
+  h1=@user.name
+
+  p #{@user.name} has been a member since #{@user.created_at}
+  p #{@user.name} has made #{@user.posts.count} posts
+  ul
+    -@user.posts.each do |a|
+      li #{link_to a.title, a} posted #{time_ago_in_words a.created_at}
+  p #{@user.name} have made #{@user.comments.count} comments
+  p #{@user.name}'s most recent comments:
+  ul
+    -@user.comments.last(5).each do |comment|
+      li In response to #{comment.commentable_type} posted by #{comment.commentable.user.name} </br>
+         <Blockquote><b> #{comment.subject} </b> posted #{time_ago_in_words comment.created_at}: <em> #{comment.body} </em>
+         <p></p>

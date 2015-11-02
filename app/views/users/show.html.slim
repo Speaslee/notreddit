@@ -1,0 +1,4 @@
+h1 Current Users
+ul
+- @users.each do |a|
+  li #{link_to a.name, "/users/profile/#{a.id}"} member for #{time_ago_in_words a.created_at} 
