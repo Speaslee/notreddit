@@ -1,6 +1,6 @@
-h1 @user.name
+-if current_user
+h1= current_user.name
 
-p You have been a member since @user.created_at
-p You have made @user.posts.count posts
-p You have made @user.comments.count posts
-  
+p You have been a member since #{current_user.created_at}
+p You have made #{current_user.posts.count} posts
+p You have made #{current_user.comments.count} comments
