@@ -18,6 +18,7 @@
 
 $(document).on("ready", function() {
   $(".btn-show_comments").on("click", function() {
-    $(".new_comment").toggle('show');
+    console.log(this);
+    $(this).siblings(".new_comment").toggle('show');
   })
 })
