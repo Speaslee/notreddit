@@ -1,12 +1,27 @@
 h1= @post.title
-h3 Posted by #{@post.user.name}
+h3 Posted by #{@post.user.name} #{time_ago_in_words @post.created_at}
 
 .well
  =@post.body
 
 hr
-/ h3 #{@post.votes.count} votes
 
+h3 #{@post.votes.count} votes, (#{@post.votes.where(status: true).count} upvotes and #{@post.votes.where(status: false).count} downvotes)
+-if current_user
+  = form_for @vote do |f|
+    =f.hidden_field :status, value: true
+    =f.hidden_field :votable_type
+    =f.hidden_field :votable_id
+    =f.hidden_field :user_id, value: current_user.id
+    button.btn.btn-default Upvote
+
+  -if current_user
+    = form_for @vote do |f|
+      =f.hidden_field :status, value: false
+      =f.hidden_field :votable_type
+      =f.hidden_field :votable_id
+      =f.hidden_field :user_id, value: current_user.id
+      button.btn.btn-default Downvote
 -counter = 0
 -@post.comments.each do |c|
   - counter += c.comments.count
@@ -38,9 +53,11 @@ ul
       h3= t.subject
       p= t.body
       small Posted #{time_ago_in_words t.created_at} ago by #{t.user.name}
+      p
+      small #{t.votes.count} votes,<em> #{t.votes.where(status: true).count} upvotes and #{t.votes.where(status: false).count} downvotes </em>
       -if current_user
         =render "form", :t=> t
-
+        =render "form2", :t=> t
       -if t.comments.any?
       ul
         -t.comments.each do |s|
@@ -48,9 +65,11 @@ ul
             h4= s.subject
             p= s.body
             small Posted #{time_ago_in_words s.created_at} ago by #{s.user.name}
-
+            p
+            small #{s.votes.count} votes,<em> #{s.votes.where(status: true).count} upvotes and #{s.votes.where(status: false).count} downvotes </em>
             -if current_user
               =render "form", :t=> s
+              =render "form2", :t=> s
 
             -if s.comments.any?
             ul
@@ -59,5 +78,8 @@ ul
                   h4= d.subject
                   p= d.body
                   small Posted #{time_ago_in_words d.created_at} ago by #{d.user.name}
+                  p
+                  small #{d.votes.count} votes,<em> #{d.votes.where(status: true).count} upvotes and #{d.votes.where(status: false).count} downvotes </em>
                   -if current_user
-                    =render "form", :t=> s
+                    =render "form", :t=> d
+                    =render "form2", :t=> d

@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :posts, except: [:delete]
   resources :comments
+  resources :votes
 root to: 'posts#index'
 end

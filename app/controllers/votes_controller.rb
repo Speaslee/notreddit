@@ -1,4 +1,7 @@
 class VotesController<ApplicationController
+  def new
+    @votes = Vote.all
+  end
 
   def create
     Vote.create(
@@ -7,6 +10,6 @@ class VotesController<ApplicationController
     votable_id: params[:vote][:votable_id],
     votable_type: params[:vote][:votable_type]
     )
-    redirect_to "/posts/1", notice: "comment commented"
+    redirect_to "/posts/1", notice: "vote recorded"
   end
 end

@@ -1,0 +1,15 @@
+= form_for Comment.find(t.id).votes.new do |f|
+  = form_for @vote do |f|
+    =f.hidden_field :status, value: true
+    =f.hidden_field :votable_type, value: "Comment"
+    =f.hidden_field :votable_id,  value: Comment.find(t.id).id
+    =f.hidden_field :user_id, value: current_user.id
+    button.btn.btn-default Upvote
+
+
+  = form_for @vote do |f|
+    =f.hidden_field :status, value: false
+    =f.hidden_field :votable_type, value: "Comment"
+    =f.hidden_field :votable_id,  value: Comment.find(t.id).id
+    =f.hidden_field :user_id, value: current_user.id
+    button.btn.btn-default Downvote

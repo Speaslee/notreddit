@@ -9,6 +9,9 @@ def show
   @comment = Comment.new(
   commentable: @post
   )
+  @vote = Vote.new(
+  votable: @post
+  )
 end
 
 def new
