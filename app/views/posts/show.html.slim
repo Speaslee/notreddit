@@ -7,8 +7,15 @@ h3 Posted by #{@post.user.name}
 hr
 / h3 #{@post.votes.count} votes
 
+-counter = 0
+-@post.comments.each do |c|
+  - counter += c.comments.count
+  -c.comments.each do |sc|
+    -counter += sc.comments.count
+    -sc.comments.each do |scc|
+      -counter += scc.comments.count
 
-h3 #{@post.comments.count} comments
+h3 #{@post.comments.count + counter} comments
 -if current_user
   = form_for @comment do |f|
     h4 Subject
@@ -34,7 +41,6 @@ ul
       -if current_user
         =render "form", :t=> t
 
-          button.btn.btn-primary Comment
       -if t.comments.any?
       ul
         -t.comments.each do |s|
@@ -46,7 +52,6 @@ ul
             -if current_user
               =render "form", :t=> s
 
-                button.btn.btn-primary Comment
             -if s.comments.any?
             ul
               -s.comments.each do |d|
@@ -56,5 +61,3 @@ ul
                   small Posted #{time_ago_in_words d.created_at} ago by #{d.user.name}
                   -if current_user
                     =render "form", :t=> s
-
-                      button.btn.btn-primary Comment

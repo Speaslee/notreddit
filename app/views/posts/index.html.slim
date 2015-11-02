@@ -1,7 +1,9 @@
 h1 Front page
 ul
 - @posts.each do |a|
-  li= link_to a.title, a
-
+  li #{link_to a.title, a} posted by: #{a.user.name} #{time_ago_in_words a.created_at} ago
+p
+p
+p
 -if current_user
     =link_to "New Post", new_post_path(@post)
