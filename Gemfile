@@ -16,6 +16,9 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'gemoji'
+ gem 'html-pipeline'
+ gem 'gemoji-parser'
 
 group :development do
   gem 'pry-rails'

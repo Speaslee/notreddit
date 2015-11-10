@@ -28,10 +28,15 @@ def create
 end
 
 def edit
-  @post = Post.find params[:id]
+  @post = Post.find(params[:id])
 end
 
 def update
+  Post.find(params[:id]).update(
+  title: params[:post][:title],
+  body: params[:post][:body]
+  )
+  redirect_to "/posts/#{params[:id]}"
 end
 
 end

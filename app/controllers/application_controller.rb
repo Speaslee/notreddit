@@ -3,6 +3,18 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
+  include EmojiHelper
+
+  def create
+    if params [:comment]
+      params[:comment][:body] = emojify(params[:comment][:body])
+      resource.update_attributes(params)
+    else
+      params[:post][:body] = emojify(params[:post][:body])
+      resource.update_attributes(params)
+    end
+  end
+
 
   def configure_permitted_parameters
   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation, :remember_me) }

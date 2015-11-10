@@ -4,6 +4,7 @@ h3 Posted by #{@post.user.name} #{time_ago_in_words @post.created_at} ago
 .well
  =@post.body
 
+
 hr
 - if @post.user.name == current_user.name
     =link_to "Edit", edit_post_path
@@ -53,6 +54,7 @@ h3 #{@post.comments.count + counter} comments
 -if @post.comments.any?
 ul
   -@post.comments.each do |t|
+    %p= sanitize comment
     li
       h3= t.subject
       p= t.body
