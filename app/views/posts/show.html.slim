@@ -62,4 +62,54 @@ ul
       -if current_user
         button.btn.btn-show_comments Comment
         =render "form", :t=> t
-      
+        =render "form2", :t=> t
+      -if t.user.name == current_user.name
+        button.btn.btn-editing Edit
+        =render "form3", :t=> t
+      -if t.comments.any?
+      ul
+        -t.comments.each do |s|
+          li
+            h4= s.subject
+            p= s.body
+            small Posted #{time_ago_in_words s.created_at} ago by #{s.user.name}
+            p
+            small #{s.votes.count} votes,<em> #{s.votes.where(status: true).count} upvotes and #{s.votes.where(status: false).count} downvotes </em>
+            -if current_user
+              button.btn.btn-show_comments Comment
+              =render "form", :t=> s
+              =render "form2", :t=> s
+            -if s.user.name == current_user.name
+              button.btn.btn-editing Edit
+              =render "form3", :t=> s
+
+            -if s.comments.any?
+            ul
+              -s.comments.each do |d|
+                li
+                  h4= d.subject
+                  p= d.body
+                  small Posted #{time_ago_in_words d.created_at} ago by #{d.user.name}
+                  p
+                  small #{d.votes.count} votes,<em> #{d.votes.where(status: true).count} upvotes and #{d.votes.where(status: false).count} downvotes </em>
+                  -if current_user
+                    button.btn.btn-show_comments Comment
+                    =render "form", :t=> d
+                    =render "form2", :t=> d
+                  -if d.user.name == current_user.name
+                    button.btn.btn-editing Edit
+                    =render "form3", :t=> d
+                  -if d.comments.any?
+                  ul
+                    -d.comments.each do |r|
+                      li
+                        h4= r.subject
+                        p= r.body
+                        small Posted #{time_ago_in_words r.created_at} ago by #{r.user.name}
+                        p
+                        small #{r.votes.count} votes,<em> #{r.votes.where(status: true).count} upvotes and #{r.votes.where(status: false).count} downvotes </em>
+                        -if current_user
+                          =render "form2", :t=> r
+                        -if r.user.name == current_user.name
+                          button.btn.btn-editing Edit
+                          =render "form3", :t=> r
