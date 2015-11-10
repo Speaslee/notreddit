@@ -29,6 +29,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+  <%= link_to "Sign up<%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %> with Google", user_omniauth_authorize_path(:google_oauth2) %>
 <% end %>
 
 <%= render "devise/shared/links" %>
