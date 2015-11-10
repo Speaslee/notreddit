@@ -4,3 +4,8 @@
   =f.hidden_field :commentable_type, value: "Comment"
   =f.hidden_field :commentable_id, value: Comment.find(t.id).id
   button.btn.btn-primary Post Comment
+  =render "form", :t=> t
+  =render "form2", :t=> t
+-if t.user.name == current_user.name
+  button.btn.btn-editing Edit
+  =render "form3", :t=> t
