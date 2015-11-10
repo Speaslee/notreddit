@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include EmojiHelper
 
   def create
-    if params [:comment]
+    if params[:comment]
       params[:comment][:body] = emojify(params[:comment][:body])
       resource.update_attributes(params)
     else

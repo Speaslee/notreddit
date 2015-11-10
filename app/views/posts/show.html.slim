@@ -2,7 +2,7 @@ h1= @post.title
 h3 Posted by #{@post.user.name} #{time_ago_in_words @post.created_at} ago
 
 .well
- =@post.body
+ =emojify(@post.body)
 
 
 hr
@@ -54,10 +54,9 @@ h3 #{@post.comments.count + counter} comments
 -if @post.comments.any?
 ul
   -@post.comments.each do |t|
-    %p= sanitize comment
     li
       h3= t.subject
-      p= t.body
+      p= emojify(t.body)
       small Posted #{time_ago_in_words t.created_at} ago by #{t.user.name}
       p
       small #{t.votes.count} votes,<em> #{t.votes.where(status: true).count} upvotes and #{t.votes.where(status: false).count} downvotes </em>
@@ -73,7 +72,7 @@ ul
         -t.comments.each do |s|
           li
             h4= s.subject
-            p= s.body
+            p= emojify(s.body)
             small Posted #{time_ago_in_words s.created_at} ago by #{s.user.name}
             p
             small #{s.votes.count} votes,<em> #{s.votes.where(status: true).count} upvotes and #{s.votes.where(status: false).count} downvotes </em>
@@ -90,7 +89,7 @@ ul
               -s.comments.each do |d|
                 li
                   h4= d.subject
-                  p= d.body
+                  p= emojify(d.body)
                   small Posted #{time_ago_in_words d.created_at} ago by #{d.user.name}
                   p
                   small #{d.votes.count} votes,<em> #{d.votes.where(status: true).count} upvotes and #{d.votes.where(status: false).count} downvotes </em>
@@ -106,7 +105,7 @@ ul
                     -d.comments.each do |r|
                       li
                         h4= r.subject
-                        p= r.body
+                        p= emojify(r.body)
                         small Posted #{time_ago_in_words r.created_at} ago by #{r.user.name}
                         p
                         small #{r.votes.count} votes,<em> #{r.votes.where(status: true).count} upvotes and #{r.votes.where(status: false).count} downvotes </em>
