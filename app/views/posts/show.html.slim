@@ -6,7 +6,7 @@ h3 Posted by #{@post.user.name} #{time_ago_in_words @post.created_at} ago
 
 
 hr
-- if @post.user.name == current_user.name
+- if current_user == @post.user
     =link_to "Edit", edit_post_path
 h3 #{@post.votes.count} votes, (#{@post.votes.where(status: true).count} upvotes and #{@post.votes.where(status: false).count} downvotes)
 -if current_user
@@ -64,7 +64,7 @@ ul
         button.btn.btn-show_comments Comment
         =render "form", :t=> t
         =render "form2", :t=> t
-      -if t.user.name == current_user.name
+      -if current_user == t.user
         button.btn.btn-editing Edit
         =render "form3", :t=> t
       -if t.comments.any?
@@ -80,7 +80,7 @@ ul
               button.btn.btn-show_comments Comment
               =render "form", :t=> s
               =render "form2", :t=> s
-            -if s.user.name == current_user.name
+            -if current_user == s.user
               button.btn.btn-editing Edit
               =render "form3", :t=> s
 
@@ -97,7 +97,7 @@ ul
                     button.btn.btn-show_comments Comment
                     =render "form", :t=> d
                     =render "form2", :t=> d
-                  -if d.user.name == current_user.name
+                  -if current_user == d.user
                     button.btn.btn-editing Edit
                     =render "form3", :t=> d
                   -if d.comments.any?
@@ -111,6 +111,6 @@ ul
                         small #{r.votes.count} votes,<em> #{r.votes.where(status: true).count} upvotes and #{r.votes.where(status: false).count} downvotes </em>
                         -if current_user
                           =render "form2", :t=> r
-                        -if r.user.name == current_user.name
+                        -if current_user == r.user 
                           button.btn.btn-editing Edit
                           =render "form3", :t=> r

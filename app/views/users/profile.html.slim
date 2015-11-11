@@ -11,7 +11,7 @@
   ul
     -current_user.comments.last(5).each do |comment|
       li In response to a <strong>#{comment.commentable_type}</strong> posted by #{comment.commentable.user.name} </br>
-        <strong> #{comment.subject} </strong> posted #{time_ago_in_words comment.created_at}: <em> #{comment.body} </em>
+        <strong> #{comment.subject} </strong> posted #{time_ago_in_words comment.created_at}: <em> #{emojify(comment.body)}</em>
         <p></p>
 
 
@@ -34,5 +34,5 @@
   ul
     -@user.comments.last(5).each do |comment|
       li In response to #{comment.commentable_type} posted by #{comment.commentable.user.name} </br>
-         <b> #{comment.subject} </b> posted #{time_ago_in_words comment.created_at}: <em> #{comment.body} </em>
+         <b> #{comment.subject} </b> posted #{time_ago_in_words comment.created_at}:<em> #{emojify(comment.body)}</em>
          <p></p>
