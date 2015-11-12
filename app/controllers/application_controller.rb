@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include EmojiHelper
 
+
   def create
     if params[:comment]
       params[:comment][:body] = emojify(params[:comment][:body])
@@ -16,9 +17,27 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def configure_permitted_parameters
-  devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation, :remember_me) }
-  devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:name, :email, :password, :remember_me) }
-  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :password_confirmation, :current_password) }
+
+    def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:name, :email, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :password_confirmation, :current_password) }
+    end
+
+helper_method :mailbox, :conversation
+
+private
+def mailbox
+  @mailbox ||= current_user.mailbox
+end
+
+def conversation
+  @conversation ||= mailbox.conversations
+end
+
+protected
+
+  def active_page(active_page)
+    @active == active_page ? "active":""
   end
 end

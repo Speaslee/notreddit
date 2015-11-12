@@ -20,6 +20,7 @@ gem 'gemoji'
 gem 'html-pipeline'
 gem 'gemoji-parser'
 gem 'figaro'
+gem 'mailboxer'
 
 group :development do
   gem 'pry-rails'

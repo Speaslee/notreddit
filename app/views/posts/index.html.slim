@@ -1,7 +1,7 @@
 h1 Front page
 ul
 - @posts.each do |a|
-  li #{link_to a.title, a} posted by: #{a.user.name} #{time_ago_in_words a.created_at} ago
+  li #{link_to a.title, a} posted by: #{a.user.name} #{time_ago_in_words a.created_at} ago ......... #{a.votes.where(status: true).count - a.votes.where(status: false).count} votes
 p
 p
 p

@@ -1,0 +1,14 @@
+-@receipts.each do |receipt|
+  - message = receipt.message
+  .media
+  .media-left
+    a href="#"
+      img.media-object src="http://placehold.it/64x64"
+  .media-body
+    h4.media-heading
+      = message.sender.name
+      b Subject:
+      =message.subject
+      b Date:
+      =message.created_at.strftime("%A, %b, %d, %Y adt %I:%M%p")
+      p= message.body
