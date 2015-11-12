@@ -1,6 +1,7 @@
 = form_for Comment.find(t.id).comments.new do |f|
   = f.hidden_field :subject, value: "Re: #{Comment.find(t.id).subject}"
   = f.text_area :body, class: "form-control", rows: 2
+  = embed(movie.youtube_url)
   =f.hidden_field :commentable_type, value: "Comment"
   =f.hidden_field :commentable_id, value: Comment.find(t.id).id
   button.btn.btn-primary Post Comment
