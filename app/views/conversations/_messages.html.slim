@@ -14,4 +14,4 @@
       b Date:
       =message.created_at.strftime("%A, %b, %d, %Y adt %I:%M%p")
       p
-      p= message.body
+      p= emojify(message.body)

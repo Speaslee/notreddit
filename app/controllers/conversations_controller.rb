@@ -16,9 +16,10 @@ class ConversationsController < ApplicationController
   end
 
   def reply
-    current_user.reply_to_conversation(conversation, message_params[:body])
+    c=conversation.find(params[:id])
+    current_user.reply_to_conversation(c, message_params[:body])
     flash[:notice] = "Your reply message was successfully sent!"
-    redirect_to conversation_path(conversation)
+    redirect_to conversation_path(c)
   end
 
   def trash

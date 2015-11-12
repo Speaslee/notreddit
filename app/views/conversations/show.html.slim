@@ -23,9 +23,10 @@
         =render "messages"
 
   .panel-footer
-    =form_for :message, url: reply_conversation_path(conversation) do |f|
+    -c=conversation.find(params[:id])
+    =form_for :message, url: reply_conversation_path(c) do |f|
       .form-group
         =f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control"
         =f.submit "Reply", class: 'btn btn-danger pull-right'
-
+        
       .clearfix
