@@ -30,7 +30,8 @@ html lang="en"
           a.navbar-brand href="/" Not Reddit
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav
-              li= link_to "Users", "/users/show"
+              -if current_user
+                li= link_to "Users", "/users/show"
 
             ul.nav.navbar-nav.pull-right
               - if current_user

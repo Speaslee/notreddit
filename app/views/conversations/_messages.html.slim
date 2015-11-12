@@ -7,8 +7,11 @@
   .media-body
     h4.media-heading
       = message.sender.name
+      p
       b Subject:
       =message.subject
+      p
       b Date:
       =message.created_at.strftime("%A, %b, %d, %Y adt %I:%M%p")
+      p
       p= message.body

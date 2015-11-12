@@ -32,7 +32,8 @@ def mailbox
 end
 
 def conversation
-  @conversation ||= mailbox.conversations
+  @conversation ||= mailbox.conversations.first
+
 end
 
 protected

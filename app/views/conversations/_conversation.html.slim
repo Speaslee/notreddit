@@ -6,9 +6,11 @@
   .media-body
     h4.media-heading
       = conversation.originator.name
+      br
       b Subject:
       = conversation.subject
+      br
       b Date:
       = conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p")
-      =truncate conversation.messages.last.body, length: 145
+      br
       = link_to "View", conversation_path(conversation)
