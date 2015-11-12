@@ -5,6 +5,7 @@ class MailboxController < ApplicationController
     @active = :inbox
   end
 
+
   def sent
     @sent = mailbox.sentbox
     @active = :sent

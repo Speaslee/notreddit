@@ -5,12 +5,12 @@
 
   .media-body
     h4.media-heading
-      = conversation.originator.name
+      = c.originator.name
       br
       b Subject:
-      = conversation.subject
+      = c.subject
       br
       b Date:
-      = conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p")
+      = c.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p")
       br
-      = link_to "View", conversation_path(conversation)
+      = link_to "View", conversation_path(c)

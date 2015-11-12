@@ -11,8 +11,8 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @receipts = conversation.receipts_for(current_user)
-    conversation.mark_as_read(current_user)
+    @receipts = conversation.find(params[:id]).receipts_for(current_user)
+    conversation.find(params[:id]).mark_as_read(current_user)
   end
 
   def reply
@@ -22,12 +22,12 @@ class ConversationsController < ApplicationController
   end
 
   def trash
-    conversation.move_to_trash(current_user)
+    conversation.find(params[:id]).move_to_trash(current_user)
     redirect_to mailbox_inbox_path
   end
 
   def untrash
-    conversation.untrash(current_user)
+    conversation.find(params[:id]).untrash(current_user)
     redirect_to mailbox_inbox_path
   end
 

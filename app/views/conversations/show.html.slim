@@ -4,10 +4,11 @@
       =link_to "Compose", new_conversation_path, class: "btn btn-success"
 
   .col-md-6.text-right
-    -if conversation.is_trashed?(current_user)
-      =link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post
+    -c=conversation.find(params[:id])
+    -if c.is_trashed?(current_user)
+      =link_to 'Untrash', untrash_conversation_path(c), class: 'btn btn-info', method: :post
     -else
-      =link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post, data: {confirm: 'are you sure?'}
+      =link_to 'Move to trash', trash_conversation_path(c), class: 'btn btn-danger', method: :post, data: {confirm: 'are you sure?'}
 
 .row
   .spacer

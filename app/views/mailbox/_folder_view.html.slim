@@ -16,4 +16,5 @@
       -if is_conversation
           =render "conversations/form"
       -else
-        =render "conversations/conversation", collection: messages
+        -conversation.each do |c|
+          =render "conversations/conversation", collection: messages, :c=> c
