@@ -30,3 +30,10 @@ $(document).on("ready", function() {
     $(this).siblings(".edit_comment").toggle('show');
   })
 })
+
+
+function addVoteHandlers() {
+  var count = 0;
+
+  var incButtons = document.querySelectorAll(".vote")
+}

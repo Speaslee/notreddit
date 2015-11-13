@@ -37,7 +37,7 @@ html lang="en"
               - if current_user
                 li= link_to current_user.name, "/users/profile/#{current_user.id}"
                 li= link_to "Sign out", destroy_user_session_path, method: :delete
-                -if unread_messages_count > 0
+                -if "#{unread_messages_count}" > 0
                   li= link_to "Inbox #{unread_messages_count}", mailbox_inbox_path
                 -else
                   li= link_to "Inbox", mailbox_inbox_path
