@@ -1,7 +1,9 @@
 -if User.find(params[:id])== current_user
   h1= current_user.name
   -if current_user[:picture]
-    img src= current_user.picture.url.sub('https://', 'http://')
+    .media-left
+      img src= current_user.picture.url.sub('https://', 'http://')
+
   p You have been a member since #{current_user.created_at}
   p You have made #{current_user.posts.count} posts
   ul
@@ -27,17 +29,17 @@
 -else
   h1=@user.name
   -if @user[:picture]
-    img src= @user.picture.url.sub('https://', 'http://')
-  
-  p #{@user.name} has been a member since #{@user.created_at}
-  p #{@user.name} has made #{@user.posts.count} posts
-  ul
-    -@user.posts.each do |a|
-      li #{link_to a.title, a} posted #{time_ago_in_words a.created_at}
-  p #{@user.name} have made #{@user.comments.count} comments
-  p #{@user.name}'s most recent comments:
-  ul
-    -@user.comments.last(5).each do |comment|
-      li In response to #{comment.commentable_type} posted by #{comment.commentable.user.name} </br>
-         <b> #{comment.subject} </b> posted #{time_ago_in_words comment.created_at}:<em> #{emojify(comment.body)}</em>
-         <p></p>
+    .media-left
+      img src= @user.picture.url.sub('https://', 'http://')
+    p #{@user.name} has been a member since #{@user.created_at}
+    p #{@user.name} has made #{@user.posts.count} posts
+    ul
+      -@user.posts.each do |a|
+        li #{link_to a.title, a} posted #{time_ago_in_words a.created_at}
+    p #{@user.name} have made #{@user.comments.count} comments
+    p #{@user.name}'s most recent comments:
+    ul
+      -@user.comments.last(5).each do |comment|
+        li In response to #{comment.commentable_type} posted by #{comment.commentable.user.name} </br>
+           <b> #{comment.subject} </b> posted #{time_ago_in_words comment.created_at}:<em> #{emojify(comment.body)}</em>
+           <p></p>
