@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   acts_as_messageable
+  mount_uploader :picture, ProfilePictureUploader
 
   def mailboxer_name
     self.name

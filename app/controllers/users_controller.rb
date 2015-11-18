@@ -16,4 +16,14 @@ class UsersController<ApplicationController
     end
   end
 
+  def picture
+    if current_user
+      current_user.update(
+      picture: params[:user][:picture]
+      )
+      redirect_to :back, notice: "Picture Uploaded"
+    else
+      redirect_to "/"
+    end
+  end
 end

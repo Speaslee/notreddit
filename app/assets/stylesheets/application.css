@@ -26,3 +26,8 @@ list-style: none;
 .edit_comment {
   display: none;
 }
+.navbar-brand {
+  font-family: Brush Script MT, cursive;
+  color: #FF00FF;
+  font-size: x-large;
+}

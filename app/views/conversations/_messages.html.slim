@@ -3,7 +3,12 @@
   .media
   .media-left
     a href="#"
-      img.media-object src="http://placehold.it/64x64"
+    /  -if message.sender[:picture]
+      /  img.media-object src="message.sender.picture.thumb.url.sub('https://', 'http://')"
+    /  -else
+        img.media-object src="http://placehold.it/64x64"
+
+
   .media-body
     h4.media-heading
       = message.sender.name

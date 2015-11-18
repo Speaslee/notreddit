@@ -1,6 +1,7 @@
 -if User.find(params[:id])== current_user
   h1= current_user.name
-
+  -if current_user[:picture]
+    img src= current_user.picture.url.sub('https://', 'http://')
   p You have been a member since #{current_user.created_at}
   p You have made #{current_user.posts.count} posts
   ul
@@ -17,13 +18,17 @@
 
   =link_to "Edit Your Profile", edit_user_registration_path
 
-
+  =form_for current_user, method: :patch, url:"/users/profile/#{current_user.id}"  do |f|
+    =f.file_field :picture
+    button.btn.btn-primary Submit
 
 
 
 -else
   h1=@user.name
-
+  -if @user[:picture]
+    img src= @user.picture.url.sub('https://', 'http://')
+  /-else
   p #{@user.name} has been a member since #{@user.created_at}
   p #{@user.name} has made #{@user.posts.count} posts
   ul
