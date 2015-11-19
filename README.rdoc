@@ -3,3 +3,8 @@ Heroku link : https://nameless-tundra-8722.herokuapp.com
 
 This is a reddit clone that allows users to make new posts and comment on them.
 Users are also able to send messages directly to other users.
+
+Next Steps:
+Add a Topics layer and tags
+Add javascript vote buttons and comments
+Make posts and post.comments sortable by votes, alphabetical and recent
