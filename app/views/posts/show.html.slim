@@ -4,7 +4,7 @@ em Filed under #{@post.topic.name}
 .well
  =emojify(@post.body)
 em Tags:
-- unless @post.tags.any? == false
+- if @post.tags.any?
   - @post.tags.each do |tag|
     = link_to tag.name, tag_path(tag), class: 'btn btn-xs btn-success tag'
 
