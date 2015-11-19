@@ -4,9 +4,9 @@ em Filed under #{@post.topic.name}
 .well
  =emojify(@post.body)
 em Tags:
-- if @post.tags.any?
+- unless @post.tags.any? == false
   - @post.tags.each do |tag|
-    = link_to tag.name, tag_path(tag), class: 'btn btn-xs btn-success tag' 
+    = link_to tag.name, tag_path(tag), class: 'btn btn-xs btn-success tag'
 
 hr
 - if current_user == @post.user
