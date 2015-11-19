@@ -1,9 +1,12 @@
 h1= @post.title
 h3 Posted by #{@post.user.name} #{time_ago_in_words @post.created_at} ago
-
+em Filed under #{@post.topic.name}
 .well
  =emojify(@post.body)
-
+em Tags:
+- if @post.tags.any?
+  - @post.tags.each do |tag|
+    = link_to tag.name, tag_path(tag), class: 'btn btn-xs btn-success tag' 
 
 hr
 - if current_user == @post.user
@@ -111,6 +114,6 @@ ul
                         small #{r.votes.count} votes,<em> #{r.votes.where(status: true).count} upvotes and #{r.votes.where(status: false).count} downvotes </em>
                         -if current_user
                           =render "form2", :t=> r
-                        -if current_user == r.user 
+                        -if current_user == r.user
                           button.btn.btn-editing Edit
                           =render "form3", :t=> r

@@ -4,8 +4,9 @@ h1 New Post
   = form_for Post.new do |f|
     h4 Title
     = f.text_area :title, class: "form-control", rows: 1
-
-    h4 body
+    h4 Body
     = f.text_area :body, class: "form-control", rows: 4
     = f.hidden_field :user_id, value: current_user.id
+    h2 Tags
+    =f.text_field :tag_list
     button.btn.btn-primary Post

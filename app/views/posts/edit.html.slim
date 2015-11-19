@@ -1,6 +1,7 @@
 h1 Editing '#{@post.title}'
 
 = form_for @post do |f|
-  =f.text_area :title, class: "form-control", rows: 1 
+  =f.text_area :title, class: "form-control", rows: 1
   = f.text_area :body, class: "form-control", rows: 10
+  =f.text_field :tag_list
   button.btn.btn-primary Save

@@ -21,6 +21,8 @@ gem 'gemoji-parser'
 gem 'figaro'
 gem 'mailboxer'
 gem 'rmagick'
+gem 'fog'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
   gem 'pry-rails'
