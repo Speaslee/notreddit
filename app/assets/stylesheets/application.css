@@ -28,10 +28,19 @@ list-style: none;
 }
 .navbar-brand {
   font-family: Brush Script MT, cursive;
-  color: #FF00FF;
-  font-size: x-large;
+  color: #E80C7F !important;
+  font-size: x-large !important;
+}
+
+.navbar-default .navbar-nav li a{
+  color: #E80C7F !important;
 }
 
 .tag {
   margin: 4px;
+}
+
+.top-bar{
+  display: inline-block;
+  vertical-align: middle;
 }
