@@ -1,7 +1,6 @@
 h1= @post.title
 h3 Posted by #{@post.user.name} #{time_ago_in_words @post.created_at} ago
--if @post.topic.any?
-  em Filed under #{@post.topic.name}
+
 .well
  =emojify(@post.body)
 em Tags:
