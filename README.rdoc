@@ -1,10 +1,12 @@
 Heroku link : https://nameless-tundra-8722.herokuapp.com
 == README
+{<img src="https://codeclimate.com/github/Speaslee/notreddit/badges/gpa.svg" />}[https://codeclimate.com/github/Speaslee/notreddit]
 
-This is a reddit clone that allows users to make new posts and comment on them.
-Users are also able to send messages directly to other users.
+This is a social site where users can post and comment on different topics. Users are able to direct message other users.
+Posts are tagged, and it is easy to find other posts using that tag.
 
 Next Steps:
-Add a Topics layer and tags
-Add javascript vote buttons and comments
-Make posts and post.comments sortable by votes, alphabetical and recent
+Add javascript vote buttons and comments to increase speed.
+Make posts and post.comments sortable by votes, alphabetical and recent.
+Make it possible for users to embed videos in post easily.
+Make an emoji menu that users can select from.
