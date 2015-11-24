@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'carrierwave'
+gem 'carrierwave', github: "carrierwaveuploader/carrierwave"
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'omniauth'
@@ -22,6 +22,7 @@ gem 'figaro'
 gem 'mailboxer'
 gem 'rmagick'
 gem 'fog'
+gem 'fog-aws'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do

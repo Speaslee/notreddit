@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: d6e7a4480ae595ad28f4cd19c5b1c6a7918b015f
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -49,11 +59,6 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -350,11 +355,12 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   better_errors
   binding_of_caller
-  carrierwave
+  carrierwave!
   coffee-rails (~> 4.1.0)
   devise
   figaro
   fog
+  fog-aws
   gemoji
   gemoji-parser
   html-pipeline

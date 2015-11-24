@@ -15,6 +15,12 @@
 
  *= require_self
  */
+
+ @font-face {
+        font-family: "Streetwear";
+        src: url(/assets/Streetwear.otf) format("opentype");
+    }
+
 ul li {
 display: block;
 list-style: none;
@@ -27,7 +33,7 @@ list-style: none;
   display: none;
 }
 .navbar-brand {
-  font-family: Brush Script MT, cursive;
+  font-family: "Streetwear";
   color: #E80C7F !important;
   font-size: x-large !important;
 }
