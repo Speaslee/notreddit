@@ -18,7 +18,10 @@
 
  @font-face {
         font-family: "Streetwear";
+        src: url(/assets/streetwear-webfont.ttf) format('truetype');
         src: url(/assets/Streetwear.otf) format("opentype");
+
+
     }
 
 ul li {
