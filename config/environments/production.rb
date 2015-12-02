@@ -76,10 +76,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  #Add the fonts path
-config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-
-#Precompile additional assets
-config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 end
