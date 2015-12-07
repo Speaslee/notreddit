@@ -16,15 +16,6 @@
  *= require_self
  */
 
- @font-face {
-        font-family: "Streetwear";
-        src: url("/assets/streetwear-webfont.eot");
-        src: url("/assets/Streetwear.otf") format('opentype'),
-             url("/assets/streetwear-webfont.ttf") format('truetype'),
-             url("/assets/streetwear-webfont.woff2") format('woff2'),
-             url("/assets/streetwear-webfont.woff") format('woff'),
-             url("/assets/streetwear-webfont.svg") format('svg');
-    }
 
 ul li {
 display: block;
