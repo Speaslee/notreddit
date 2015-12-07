@@ -10,3 +10,9 @@ Add javascript vote buttons and comments to increase speed.
 Make posts and post.comments sortable by votes, alphabetical and recent.
 Make it possible for users to embed videos in post easily.
 Make an emoji menu that users can select from.
+
+To deploy run:
+SECRET_KEY_BASE=ABC RAILS_ENV=production bin/rake assets:precompile
+git add .
+git commit -m "message"
+git push heroku master
